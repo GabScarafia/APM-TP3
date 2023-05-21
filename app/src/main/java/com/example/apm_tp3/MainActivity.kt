@@ -67,7 +67,6 @@ class MainActivity : AppCompatActivity() {
                 recordButton.isEnabled = false
                 playButton.isEnabled = false
                 captureButton.isEnabled = false
-                photoImageView.visibility = View.GONE
                 showToast("Grabando audio de 5 segundos...")
 
                 // Detener la grabación después de 5 segundos
