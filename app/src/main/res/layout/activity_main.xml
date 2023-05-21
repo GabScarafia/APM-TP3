@@ -9,14 +9,14 @@
         android:id="@+id/recordButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Grabar Audio" />
+        android:text="Grabar Audio 🎙️ " />
 
     <Button
         android:id="@+id/playButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/recordButton"
-        android:text="Reproducir Audio"
+        android:text="Reproducir Audio 🎙️ "
         android:enabled="false" />
 
     <ImageView

@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.media.MediaPlayer
 import android.media.MediaRecorder
+import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.provider.MediaStore
@@ -37,6 +38,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.RECORD_AUDIO
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.RECORD_AUDIO),
+                    200
+                )
+            }
+        }
         recordButton = findViewById(R.id.recordButton)
         playButton = findViewById(R.id.playButton)
         captureButton = findViewById(R.id.captureButton)
@@ -66,13 +80,12 @@ class MainActivity : AppCompatActivity() {
                 isRecording = true
                 recordButton.isEnabled = false
                 playButton.isEnabled = false
+
                 captureButton.isEnabled = false
                 showToast("Grabando audio de 5 segundos...")
 
-                // Detener la grabación después de 5 segundos
                 timer = object : CountDownTimer(5000, 1000) {
                     override fun onTick(millisUntilFinished: Long) {
-                        // No se hace nada en cada tick
                     }
 
                     override fun onFinish() {

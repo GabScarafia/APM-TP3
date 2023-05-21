@@ -4,7 +4,8 @@
 
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="true" />
+        android:required="false" />
+    <uses-feature android:name="android.hardware.MICROPHONE" android:required="false" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
